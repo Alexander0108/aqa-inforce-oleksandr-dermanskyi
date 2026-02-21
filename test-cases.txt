@@ -1,0 +1,49 @@
+PROJECT: aqa-inforce-oleksandr-dermanskyi
+APP URL: [https://automationintesting.online/](https://automationintesting.online/)
+
+--------------------------------------------------
+PART 1: UI TEST CASES
+--------------------------------------------------
+
+TC-01: Successful Room Booking (Positive)
+Description: Verify that a user can book a room with valid data.
+Steps:
+1. Open [https://automationintesting.online/](https://automationintesting.online/)
+2. Scroll to the rooms section and click "Book now" for an available room.
+3. Select a date range in the calendar (future dates).
+4. Fill valid user details:
+   - Firstname: Oleksandr
+   - Lastname: Dermanskyi
+   - Email: a.dermanskiy@gmail.com
+   - Phone: 380664586959 (valid 11-21 digits format)
+5. Click the "Book" button.
+Expected Result: "Booking Confirmed" message is displayed, and the modal contains booking details.
+
+TC-02: Booking Validation - Invalid Data (Negative)
+Description: Verify that the system prevents booking with invalid phone number and empty fields.
+Steps:
+1. Open the App and click "Book now" for any room.
+2. Select any available dates.
+3. Leave all fields empty and click "Book".
+4. Fill "Firstname", "Lastname", "Email", but enter a "Phone" with only 5 digits.
+5. Click "Book".
+Expected Result: 
+- After step 3: Alert messages "must not be empty/blank" appear.
+- After step 5: Error message "size must be between 11 and 21" appears.
+
+TC-03: Booking Visibility - Unavailable Dates
+Description: Verify that already booked dates are correctly displayed as "Unavailable" on the reservation screen.
+Steps:
+1. Open the main page.
+2. Find an available room and click "Book now" to enter the reservation page.
+3. Locate the calendar for the selected room.
+4. Observe dates that are already occupied (previously booked).
+Expected Result: Occupied dates contain a label/div with text "Unavailable" and class ".rbc-event-content". These dates are visually blocked for new selection.
+
+--------------------------------------------------
+PART 2: API AUTOMATION FLOW (Summary)
+--------------------------------------------------
+- POST /room/ : Create room via Admin API and verify presence in GET /room/
+- POST /booking/ : Book room and verify in Admin panel
+- PUT /room/{id} : Update room details and verify via User GET API
+- DELETE /room/{id} : Remove room and verify 404/absence in list
