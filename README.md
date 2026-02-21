@@ -3,7 +3,7 @@
 Automated testing project for the Restful Booker Platform.
 
 ## 📁 Project Structure
-* `test-cases.txt` — Manual test cases (Part 1).
+* `test-cases.txt` — Manual test cases and test design summary.
 * `tests/booking.spec.js` — UI automation for booking flows.
 * `tests/api-room.spec.js` — API automation for room management (CRUD).
 * `pages/BookingPage.js` — Page Object Model implementation.
