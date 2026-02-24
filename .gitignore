@@ -12,3 +12,6 @@ debug-admin-panel.png
 # Task files
 *.pdf
 *.docx
+
+#macOS files
+.DS_Store
